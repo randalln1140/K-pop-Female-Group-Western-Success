@@ -7,6 +7,7 @@ abstract: "With the success of K-pop idol groups such as BTS and Twice entering 
 format: pdf
 documentclass: article
 geometry: margin = 1in 
+bibliography: references.bib
 ---
 
 ## 1. Introduction
