@@ -7,10 +7,16 @@ abstract: "With the success of K-pop idol groups such as BTS and Twice entering 
 format: pdf
 documentclass: article
 geometry: margin = 1in 
-bibliography: references.bib
 ---
 
 ## 1. Introduction
+The Korean pop music industry, commonly known as K-pop, has seen a surge in popularity worldwide over the past few years. K-pop has become a global phenomenon, and its popularity has continued to grow steadily, particularly in Western markets. One factor that has contributed to the increasing popularity of K-pop in the West is the emergence of survival shows that form K-pop groups. These shows, such as "Produce 101" and "Girls Planet 999" , have become increasingly popular in recent years and have been instrumental in the formation of many successful K-pop groups.
+
+The success of these survival show groups has also led to an increase in the overall popularity of K-pop in the Western market. As the popularity of K-pop continues to grow, there is a growing need for the industry to expand in the Western market. This expansion is important for several reasons. Firstly, the Western market represents a significant opportunity for growth, with a large and diverse audience that is hungry for new and exciting music. Secondly, expanding into the Western market can provide K-pop groups with access to new revenue streams, such as merchandise sales, concerts, and collaborations with Western artists. Finally, expanding into the Western market can help to establish K-pop as a mainstream genre, and solidify its position as a global cultural phenomenon. Therefore, I'm interested in whether increasing hits and audiences is correlated with any factors from the songs. If so, which attributes will affect the song's popularity the most? And is it possible to predict how popular a song can be in the future based on certain attributes?
+
+The data used in this report is obtained from Spotify API. The datasets are specified to the five survival show K-pop idol groups that I have selected, and it provides different kinds of information about every released songs such as danceability, tempo, and valence. In these data sets, I’m particularly interested in the different attribute values between their most popular songs and least popular songs, and if we can establish any trends based on these statistics . In section 2, cleaned data sets are obtained and explained to perform further analysis. Visualizations in the forms of tables and figures are presented to help to explain the possible correlation between the different attributes and the listener count on Spotify. In section 3, a model is constructed to justify the relationship between tempo, danceability and listener count, and to make future predictions. The interpretation of the final model along with all the findings regarding the potential success factors for K-pop songs in the Western market is presented in section 4. A discussion is carried out in section 5 on the implications of the findings regarding tempo and danceability, and possible application to K-pop songwriters and composers, as well as the weaknesses and future steps of this paper.
+
+
 
 
 ## 2. Data
