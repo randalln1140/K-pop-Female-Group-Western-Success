@@ -22,6 +22,114 @@ The data used in this report is obtained from Spotify API. The datasets are spec
 
 ## 2. Data
 
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+##Load Library
+library(spotifyr)
+library(tidyverse)
+library(janitor)
+library(knitr)
+
+
+##Read Data Sets
+izone_top <- 
+  readRDS(here::here("inputs/data/izone_top.rds"))
+kep1er_top <- 
+  readRDS(here::here("inputs/data/kep1er_top.rds"))
+mml_top <- 
+  readRDS(here::here("inputs/data/mml_top.rds"))
+fromis_top <- 
+  readRDS(here::here("inputs/data/fromis_top.rds"))
+ioi_top <- 
+  readRDS(here::here("inputs/data/ioi_top.rds"))
+izone_top10_features <- 
+  readRDS(here::here("inputs/data/izone_top10_features.rds"))
+kep1er_top10_features <-
+  readRDS(here::here("inputs/data/kep1er_top10_features.rds"))
+mml_top10_features <- 
+  readRDS(here::here("inputs/data/mml_top10_features.rds"))
+ioi_top10_features <- 
+  readRDS(here::here("inputs/data/ioi_top10_features.rds"))
+f9_top10_features <- 
+  readRDS(here::here("inputs/data/f9_top10_features.rds"))
+
+
+## Merge features with their respective songs by the "id" variable
+izone_merge <-
+  merge(izone_top, izone_top10_features, by =c("id"))
+kep1er_merge <-
+  merge(kep1er_top, kep1er_top10_features, by =c("id"))
+mml_merge <-
+  merge(mml_top, mml_top10_features, by =c("id"))
+ioi_merge <-
+  merge(ioi_top, ioi_top10_features, by =c("id"))
+f9_merge <-
+  merge(fromis_top, f9_top10_features, by =c("id"))
+
+
+## Adding a column to clearly show artist name for each data set
+iz_artist_name <- 
+  c("IZ*ONE","IZ*ONE","IZ*ONE","IZ*ONE","IZ*ONE","IZ*ONE","IZ*ONE","IZ*ONE","IZ*ONE","IZ*ONE")
+izone_merge$artist_name <- iz_artist_name
+
+kp_artist_name <- 
+  c("Kep1er","Kep1er","Kep1er","Kep1er","Kep1er","Kep1er","Kep1er","Kep1er","Kep1er","Kep1er")
+kep1er_merge$artist_name <- kp_artist_name
+
+mml_artist_name <- 
+  c("Momoland","Momoland","Momoland","Momoland","Momoland","Momoland","Momoland","Momoland","Momoland","Momoland")
+mml_merge$artist_name <- mml_artist_name
+
+ioi_artist_name <- 
+  c("I.O.I","I.O.I","I.O.I","I.O.I","I.O.I","I.O.I","I.O.I","I.O.I","I.O.I","I.O.I")
+ioi_merge$artist_name <- ioi_artist_name
+
+f9_artist_name <- 
+  c("fromis_9","fromis_9","fromis_9","fromis_9","fromis_9","fromis_9","fromis_9","fromis_9","fromis_9","fromis_9")
+f9_merge$artist_name <- f9_artist_name
+
+
+## Weed out unnecessary information before merging all data sets into one
+izone_final <-
+  izone_merge |>
+  select(name, popularity, album.name, album.release_date, danceability, energy, key, loudness, speechiness, acousticness, time_signature, valence, tempo, artist_name)
+
+kep1er_final <-
+  kep1er_merge |>
+  select(name, popularity, album.name, album.release_date, danceability, energy, key, loudness, speechiness, acousticness, time_signature, valence, tempo, artist_name)
+
+mml_final <-
+  mml_merge |>
+  select(name, popularity, album.name, album.release_date, danceability, energy, key, loudness, speechiness, acousticness, time_signature, valence, tempo, artist_name)
+
+ioi_final <-
+  ioi_merge |>
+  select(name, popularity, album.name, album.release_date, danceability, energy, key, loudness, speechiness, acousticness, time_signature, valence, tempo, artist_name)
+
+f9_final <-
+  f9_merge |>
+  select(name, popularity, album.name, album.release_date, danceability, energy, key, loudness, speechiness, acousticness, time_signature, valence, tempo, artist_name)
+
+
+## Combine all data sets into one 
+kpop_final <-
+  rbind(f9_final, ioi_final, kep1er_final, mml_final, izone_final)
+
+
+```
+
+
+
+
+
+
+
+
+
+
 ## 3. Model
 
 ## 4. Results
