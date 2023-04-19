@@ -119,9 +119,123 @@ kpop_final <-
   rbind(f9_final, ioi_final, kep1er_final, mml_final, izone_final)
 
 
+## Clean up column names
+kpop_final <-
+  clean_names(kpop_final)
+
+
 ```
 
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+## Make a table to show top 10 tracks from selected groups in descending popularity
+kpop_final_descending <-
+  kpop_final[order(kpop_final$popularity, decreasing = TRUE),]
 
+kpop_final_ascending <-
+  kpop_final[order(kpop_final$popularity, decreasing = FALSE),]
+
+kpop_final_descending |>
+  top_n(10, popularity) |>
+  select(name, popularity, album_release_date, artist_name) |>
+  knitr::kable("pipe", align = "lrcr", caption = "Extracting Top 10 Most Popular Tracks made by Selected Kpop Idol Groups", col.names = c("Track Name", "Popularity", "Album Release Date", "Artist Name"))
+
+kpop_final_ascending |>
+  filter(popularity < 48) |>
+  select(name, popularity, album_release_date, artist_name) |>
+  knitr::kable("pipe", align = "lrcr", caption = "Extracting Top 11 Least Popular Tracks made by Selected K-pop Idol Groups", col.names = c("Track Name", "Popularity", "Album Release Date", "Artist Name"))
+```
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+
+kpop_final_descending |>
+  top_n(10, popularity) |>
+  ggplot(aes(x = name, y = danceability, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+
+
+kpop_final |>
+  filter(popularity < 48) |>
+  ggplot(aes(x = name, y = danceability, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+
+```
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+kpop_final |>
+  top_n(10, popularity) |>
+  ggplot(aes(x = name, y = energy, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+
+kpop_final |>
+  filter(popularity < 48) |>
+  ggplot(aes(x = name, y = energy, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+
+```
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+kpop_final_descending |>
+  top_n(10, popularity) |>
+  ggplot(aes(x = name, y = speechiness, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+
+kpop_final |>
+  filter(popularity < 48) |>
+  ggplot(aes(x = name, y = speechiness, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+
+```
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+kpop_final_descending |>
+  top_n(10, popularity) |>
+  ggplot(aes(x = name, y = acousticness, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+
+kpop_final |>
+  filter(popularity < 48) |>
+  ggplot(aes(x = name, y = acousticness, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+```
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+kpop_final_descending |>
+  top_n(10, popularity) |>
+  ggplot(aes(x = name, y = valence, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+
+kpop_final |>
+  filter(popularity < 48) |>
+  ggplot(aes(x = name, y = valence, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+```
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+kpop_final_descending |>
+  top_n(10, popularity) |>
+  ggplot(aes(x = name, y = tempo, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+
+kpop_final |>
+  filter(popularity < 48) |>
+  ggplot(aes(x = name, y = tempo, fill = artist_name)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 90))
+```
 
 
 
@@ -132,7 +246,31 @@ kpop_final <-
 
 ## 3. Model
 
+Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.  
+
+\begin{align} 
+y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
+\mu_i &= \alpha + \beta_i + \gamma_i\\
+\alpha &\sim \mbox{Normal}(0, 2.5) \\
+\beta &\sim \mbox{Normal}(0, 2.5) \\
+\gamma &\sim \mbox{Normal}(0, 2.5) \\
+\sigma &\sim \mbox{Exponential}(1)
+\end{align}
+
+```{r}
+
+
+```
+
 ## 4. Results
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+
+
+
+```
 
 ## 5. Discussion
 

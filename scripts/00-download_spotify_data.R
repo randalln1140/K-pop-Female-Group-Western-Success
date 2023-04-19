@@ -11,7 +11,6 @@
 library(spotifyr)
 library(tidyverse)
 
-
 #### Get 10 most popular tracks from each chosen group ####
 izone_top <- spotifyr::get_artist_top_tracks('5r1tUTxVSgvBHnoDuDODPH')
 kep1er_top <- spotifyr::get_artist_top_tracks('5R7AMwDeroq6Ls0COQYpS4')
