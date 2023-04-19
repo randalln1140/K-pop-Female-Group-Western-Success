@@ -4,7 +4,6 @@ date: "4 April 2023"
 date-format: long
 author: "Randall Ni"
 abstract: "With the success of K-pop idol groups such as BTS and Twice entering the Western market, the question for many other companies became whether they can reproduce the success for their own idol groups. To explore whether specific elements of the songs correlate with increasing hits and audiences, this paper aims to investigate the relationship between danceability, energy, valence, tempo, and listener counts on Spotify. In order to maintain fairness, this paper will only analyze female k-pop idol groups that were formed due to survival shows.This ensures that they have an adequate fanbase and are comparable to each other. By utilizing data pulled from Spotify API, we found that listener counts are closely correlated with tempo and danceability. In addition, implications and possible reasons behind this correlation are discussed and explanations for outliers are provided."
-format: pdf
 documentclass: article
 geometry: margin = 1in 
 bibliography: references.bib
@@ -269,8 +268,11 @@ y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
 #| echo: false
 
 library(rstanarm)
+library(broom.mixed)
+
 first_model <-
   readRDS(file = here::here("outputs/models/first_model.rds"))
+
 modelsummary::modelsummary(
   list(
     "First model" = first_model
@@ -279,6 +281,10 @@ modelsummary::modelsummary(
   fmt = 2
 )
 
+#tinytex::parse_install(
+#  text = "LaTeX Error: File `siunitx.sty' not found."
+#)
+#tinytex::parse_install("kpop-idol-groups-western-success.log")
 
 ```
 

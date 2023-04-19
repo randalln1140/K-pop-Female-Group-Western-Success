@@ -25,6 +25,10 @@ simulated_kpop_final_data $popularity |>
 simulated_kpop_final_data $album_name |>
   class()
 
+### album release date has to be a character
+simulated_kpop_final_data $album_release_date |>
+  class()
+
 ### danceability has to be between 0.4 - 0.9
 simulated_kpop_final_data $danceability |>
   min() >= 0.4
