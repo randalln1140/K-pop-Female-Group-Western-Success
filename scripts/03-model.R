@@ -15,7 +15,7 @@ library(rstanarm)
 ### Model data ####
 first_model <-
   stan_glm(
-    formula = popularity ~ danceability + energy + speechiness + acousticness + valence + tempo,
+    formula = popularity ~ speechiness + acousticness,
     data = kpop_final,
     family = gaussian(),
     prior = normal(location = 0, scale = 2.5, autoscale = TRUE),
