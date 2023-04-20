@@ -14,7 +14,7 @@ All raw data are stored under inputs/data, These data are all pulled from Spotif
 
 The outputs folder contains data file, paper file, and models file.
 
-#### data file
+#### data folder
 
 The data file contains the simulated final data set that I used for analysis and model building.
 
